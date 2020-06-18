@@ -67,7 +67,7 @@ export const editOwnerData = (ownerData: Partial<FarmState["ownerData"]>): FarmA
   payload: ownerData
 });
 
-export const editFarmNameAction = (name: string): FarmAction => ({
+export const editFarmName = (name: string): FarmAction => ({
   type: "EDIT_FARM_NAME",
   payload: name
 });

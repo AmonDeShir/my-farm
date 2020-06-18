@@ -1,5 +1,5 @@
 import React from "react";
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { theme, ThemeProps } from './theme';
 import Background from "../components/background/Background";
@@ -28,13 +28,22 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Container = styled.div`
+  height: 100%;
+  width: calc(100% - 180px - 15px);
+  padding-left: calc(180px + 15px);
+  padding-top: 15px;
+`;
+
 const Layout: React.FC = ({ children }) => (
   <ThemeProvider theme={theme}>
     <Background>
       <Router>
         <GlobalStyle />
         <Navigation />
-        {children}
+        <Container>
+          {children}
+        </Container>
       </Router>
     </Background>
   </ThemeProvider>

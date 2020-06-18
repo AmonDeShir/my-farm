@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { ThemeProps } from "../../layout/theme"
 
 type Props = ThemeProps & {
@@ -12,8 +12,9 @@ const Panel = styled.div`
   height: ${(props: Props) => props.height};
   background-color: ${(props: Props) => props.theme.colors.second_background};
   box-shadow: ${(props: Props) => props.theme.shadow};
-  
+
   border-radius: 10px;
+  margin-bottom: 10px;
 `;
 
 export default Panel;

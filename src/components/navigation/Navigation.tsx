@@ -5,7 +5,7 @@ import Logo from "./Logo";
 import Topic from "./Topic";
 import Link from './Link';
 
-const Background = styled.div`
+const Background = styled.div` 
   width: 180px;
   height: 100vh;
   position: fixed;
