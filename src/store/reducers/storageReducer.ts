@@ -19,7 +19,7 @@ const initalState: StorageState = {
   records: []
 }
 
-export const storeageReducer = (state: StorageState = initalState, action: StorageAction): StorageState => {
+export const storageReducer = (state: StorageState = initalState, action: StorageAction): StorageState => {
   switch (action.type) {
     case "SET_STORAGE_RECORDS": {
       return action.payload.state;
