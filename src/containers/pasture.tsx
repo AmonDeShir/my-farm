@@ -4,67 +4,72 @@ import Flex from "../components/layout/flex";
 import AddBtn from "../components/buttons/addBtn";
 import Center from "../components/layout/center";
 import { RootState } from '../store/store';
-import { FieldsState } from '../store/reducers/fieldReducer';
-import { createField, removeField, editField } from '../store/actions/fieldActions';
-import FieldViewer from '../components/viewer/fieldViewer';
 import PanelLabel from '../components/label/panelLabel';
 import Grid from '../components/layout/grid';
+import PastureViewer from '../components/viewer/pastureViewer';
+import { PasturesState } from '../store/reducers/pastureReducer';
+import { createPasture, editPasture, removePasture } from '../store/actions/pastureActions';
 
-const Fields = () => {
+const Pasture = () => {
   const dispatch = useDispatch();
-  const fields = useSelector<RootState, FieldsState["fields"]>((state) => state.fields.fields);
+  const pastures = useSelector<RootState, PasturesState["pastures"]>((state) => state.pastures.pastures);
 
   const onRemoveClick = (id: number) => {
-    dispatch(removeField(id));
+    dispatch(removePasture(id));
   }
 
   const onCreate = () => {
-    dispatch(createField());
+    dispatch(createPasture());
+    console.log(pastures);
   }
 
   const onAlphabeticalIdChanged = (id: number, value: string) => {
-    dispatch(editField(id, { alphabeticalId: value }));
+    dispatch(editPasture(id, { alphabeticalId: value }));
   }
 
   const onAreaInHectaresChanged = (id: number, value: number) => {
-    dispatch(editField(id, { areaInHectares: value }));
+    dispatch(editPasture(id, { areaInHectares: value }));
   }
 
   const onNameChanged = (id: number, value: string) => {
-    console.log("1", value);
-    dispatch(editField(id, { name: value }));
+    dispatch(editPasture(id, { name: value }));
   }
 
   const onRealizedPackageOrVariantChanged = (id: number, value: string) => {
-    dispatch(editField(id, { realizedPackageOrVariant: value }));
+    dispatch(editPasture(id, { realizedPackageOrVariant: value }));
   }
 
   const onRecordNumberChanged = (id: number, value: string) => {
-    dispatch(editField(id, { recordNumber: value }));
+    dispatch(editPasture(id, { recordNumber: value }));
+  }
+
+  const onTypeOfUseChanged = (id: number, value: string) => {
+    dispatch(editPasture(id, { recordNumber: value }));
   }
 
   return (
     <>
       <Flex>
-        <PanelLabel largeFont>Pola</PanelLabel>
+        <PanelLabel largeFont>Pastwiska</PanelLabel>
       </Flex>
 
-      <Grid column-size="290px" row-size="233px">
-        {fields.map(field =>
-          <FieldViewer
-            id={field.id}
-            key={field.id}
-            data={field}
+      <Grid column-size="290px" row-size="272px">
+        {pastures.map(pasture =>
+          <PastureViewer
+            id={pasture.id}
+            key={pasture.id}
+            data={pasture}
             onAlphabeticalIdChanged={onAlphabeticalIdChanged}
             onAreaInHectaresChanged={onAreaInHectaresChanged}
             onNameChanged={onNameChanged}
             onRealizedPackageOrVariantChanged={onRealizedPackageOrVariantChanged}
             onRecordNumberChanged={onRecordNumberChanged}
+            onTypeOfUseChanged={onTypeOfUseChanged}
             onDeleteBtnClick={onRemoveClick}
           />
         )}
 
-        <Center width="280px" height="223px">
+        <Center width="280px" height="262px">
           <AddBtn small onClick={onCreate} />
         </Center>
       </Grid>
@@ -72,4 +77,4 @@ const Fields = () => {
   )
 }
 
-export default Fields
+export default Pasture

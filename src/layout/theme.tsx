@@ -1,3 +1,5 @@
+import styled, { CreateStyled } from '@emotion/styled'
+
 export const theme =
 {  
   colors:{
@@ -18,4 +20,7 @@ export const theme =
   shadow: "3px 3px 4px rgba(0, 0, 0, 0.9), -1px -1px 4px rgba(0, 0, 0, 0.4)"
 }
 
-export type ThemeProps = {theme: typeof theme};
+type Theme = typeof theme;
+
+export type ThemeProps = {"theme": Theme}
+export default styled as CreateStyled<Theme>

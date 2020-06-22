@@ -74,10 +74,13 @@
     }
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@hot-loader/react-dom": "^16.13.0",
     "@types/react-router-dom": "^5.1.5",
-    "@types/styled-components": "^5.1.0",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^5.2.0",
+    "emotion-theming": "^10.0.27",
     "file-loader": "^6.0.0",
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
@@ -85,7 +88,6 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "styled-components": "^5.1.1",
     "unzipper": "^0.10.11",
     "url-loader": "^4.1.0"
   },

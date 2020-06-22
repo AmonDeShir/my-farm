@@ -1,9 +1,10 @@
-import styled from "styled-components"
 import { ThemeProps } from "../../layout/theme"
+import styled from "@emotion/styled";
 
 type Props = ThemeProps & {
   width: string;
   height: string;
+  marginLeft?:boolean;
 }
 
 
@@ -15,6 +16,8 @@ const Panel = styled.div`
 
   border-radius: 10px;
   margin-bottom: 10px;
+  margin-left: ${(props: Props) => props.marginLeft ? "10px" : "0"};
+
 `;
 
 export default Panel;

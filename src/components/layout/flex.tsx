@@ -1,8 +1,13 @@
-import styled from "styled-components";
+import styled from '@emotion/styled'
+
+type Props = {
+  height?: string;
+  width?: string;
+}
 
 const Flex = styled.div`
-  width: calc(100vw - 180px);
-  height: 100%;
+  width: ${(props:Props) => "calc("+ props.width ? props.width : "100vw" +") - 180px)"};
+  height: ${(props:Props) => props.height ? props.height : "100%"};
 
   display: flex;
   flex-wrap: wrap; 

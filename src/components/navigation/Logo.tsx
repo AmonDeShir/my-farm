@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import LogoImage from "../../assets/logo.svg"
 
 const Logo = styled.div`

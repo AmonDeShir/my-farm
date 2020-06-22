@@ -10,16 +10,17 @@ import Textbox from '../components/textbox/textbox';
 import DeletableStringViewer from "../components/viewer/deletableStringViewer"
 import AddBtn from "../components/buttons/addBtn";
 import Center from "../components/layout/center";
+import { RootState } from '../store/store';
 
 const Farm = () => {
   const dispatch = useDispatch();
 
-  const ownerData = useSelector<FarmState, FarmState["ownerData"]>((state) => state.ownerData)
-  const farmName = useSelector<FarmState, FarmState["farmName"]>((state) => state.farmName)
-  const districtNumber = useSelector<FarmState, FarmState["districtNumber"]>((state) => state.districtNumber)
-  const plEkoNumber = useSelector<FarmState, FarmState["plEkoNumber"]>((state) => state.plEkoNumber)
-  const ekoPackages = useSelector<FarmState, FarmState["ekoPackages"]>((state) => state.ekoPackages)
-  const agroEnvPackages = useSelector<FarmState, FarmState["agroEnvPackages"]>((state) => state.agroEnvPackages)
+  const ownerData = useSelector<RootState, FarmState["ownerData"]>((state) => state.farm.ownerData)
+  const farmName = useSelector<RootState, FarmState["farmName"]>((state) => state.farm.farmName)
+  const districtNumber = useSelector<RootState, FarmState["districtNumber"]>((state) => state.farm.districtNumber)
+  const plEkoNumber = useSelector<RootState, FarmState["plEkoNumber"]>((state) => state.farm.plEkoNumber)
+  const ekoPackages = useSelector<RootState, FarmState["ekoPackages"]>((state) => state.farm.ekoPackages)
+  const agroEnvPackages = useSelector<RootState, FarmState["agroEnvPackages"]>((state) => state.farm.agroEnvPackages)
 
   const onEditOwnerLegalName = (name?: string) => {
     dispatch(editOwnerData({
@@ -39,10 +40,12 @@ const Farm = () => {
   }
 
   const onEditDistrictNumber = (value: string) => {
+    console.log(value, "distric number")
     dispatch(editDistrictNumber(value));
   }
 
   const onEditPlEkoNumber = (value: string) => {
+    console.log(value, "pleko")
     dispatch(editPlEkoNumber(value));
   }
 

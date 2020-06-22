@@ -50,6 +50,12 @@ type EditAgroEnvPackage = {
   }
 };
 
+type SetFarm = {
+  type: "SET_FARM", payload: {
+    state: FarmState
+  }
+};
+
 
 export type FarmAction = EditOwnerDataAction
   | EditFarmNameAction
@@ -60,7 +66,8 @@ export type FarmAction = EditOwnerDataAction
   | EditEkoPackage
   | CreateAgroEnvPackage
   | RemoveAgroEnvPackage
-  | EditAgroEnvPackage;
+  | EditAgroEnvPackage
+  | SetFarm;
 
 export const editOwnerData = (ownerData: Partial<FarmState["ownerData"]>): FarmAction => ({
   type: "EDIT_OWNER_DATA",
@@ -119,5 +126,13 @@ export const removeAgroEnvPackage = (id: number): FarmAction => ({
   type: "REMOVE_AGRO_ENV_PACKAGE",
   payload: {
     id: id,
+  }
+});
+
+
+export const setFarm = (state: FarmState): FarmAction => ({
+  type: "SET_FARM",
+  payload: {
+    state: state
   }
 });

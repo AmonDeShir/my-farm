@@ -1,4 +1,4 @@
-import { Field } from "../reducers/FieldReducer";
+import { Field, FieldsState } from "../reducers/fieldReducer";
 
 type EditField = {
   type: "CREATE_FIELD", payload: {}
@@ -18,9 +18,16 @@ type RemoveField = {
 };
 
 
+type SetFields = {
+  type: "SET_FIELDS", payload: {
+    state: FieldsState
+  }
+};
+
 export type FieldAction = EditField
   | CreateField
-  | RemoveField;
+  | RemoveField
+  | SetFields;
 
 
 export const createField = (): FieldAction => ({
@@ -40,5 +47,12 @@ export const removeField = (id: number): FieldAction => ({
   type: "REMOVE_FIELD",
   payload: {
     id: id,
+  }
+});
+
+export const setFields = (state: FieldsState):FieldAction => ({
+  type: "SET_FIELDS",
+  payload: {
+    state: state
   }
 });

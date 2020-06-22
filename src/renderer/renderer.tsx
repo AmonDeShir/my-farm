@@ -6,12 +6,20 @@ import { Route } from "react-router-dom";
 import { store } from "../store/store";
 import Farm from "../containers/farm";
 import Fields from "../containers/fields";
+import Pasture from "../containers/pasture";
+import Crop from "../containers/crop";
+import AgrotechnicalOperations from "../containers/agrotechnicalOperations";
+import { LoadReduxStore } from "../store/dataManager";
 
 ReactDOM.render(
   <Layout>
     <Provider store={store}>
-      <Route path="/" exact component={Farm}/>
-      <Route path="/fields" component={Fields} />
+      <LoadReduxStore/>
+      <Route path="/" exact  render={() => <Farm/>}/>
+      <Route path="/fields"  render={() => <Fields/>} />
+      <Route path="/pastures" render={() => <Pasture/>} />
+      <Route path="/crops" render={() => <Crop/>} />
+      <Route path="/agrotechnicalOperations" render={() => <AgrotechnicalOperations/>} />
     </Provider>
   </Layout>,
   document.getElementById("app")

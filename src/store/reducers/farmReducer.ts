@@ -34,6 +34,10 @@ const initalState: FarmState = {
 
 export const farmReducer = (state: FarmState = initalState, action: FarmAction): FarmState => {
   switch (action.type) {
+    case "SET_FARM": {
+      return action.payload.state;
+    }
+
     case "EDIT_OWNER_DATA": {
       return {
         ...state,
@@ -51,14 +55,14 @@ export const farmReducer = (state: FarmState = initalState, action: FarmAction):
     case "EDIT_DISTRICT_NUMBER": {
       return {
         ...state,
-        farmName: action.payload
+        districtNumber: action.payload
       }
     }
 
     case "EDIT_PL_EKO_NUMBER": {
       return {
         ...state,
-        farmName: action.payload
+        plEkoNumber: action.payload
       }
     }
 

@@ -4,9 +4,9 @@ import { ThemeProps } from "../../layout/theme";
 
 type Props = {
   description: string;
-  onEdit: (text: string) => void;
-  defaultValue: string;
-  onlyNumbers?: boolean;
+  onEdit: (text: number) => void;
+  values: {key:number, value:string}[];
+  defaultValue: number;
 };
 
 const Container = styled.div`
@@ -32,7 +32,7 @@ const Description = styled.p`
   margin: 0px;
 `;
 
-const StyledInput = styled.input`
+const StyledSelect = styled.select`
   width: 158px;
   height: 100%;
 
@@ -49,46 +49,32 @@ const StyledInput = styled.input`
   }
 `;
 
-const Textbox: React.FC<Props> = ({ onlyNumbers, description, onEdit, defaultValue }) => {
-  const [value, setValue] = useState(() => (defaultValue ? defaultValue : ""));
+const Combobox: React.FC<Props> = ({defaultValue, description, values, onEdit }) => {
+  const [value, setValue] = useState(() => (defaultValue));
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let newValue = event.target.value;
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newValue = Number(event.target.value);
+    console.log("-1", newValue, event.target.value)
 
-    if (onlyNumbers)
-      newValue = removeAllNoNumericValues(newValue)
 
-    setValue(newValue)
+    setValue(newValue);
 
     if (onEdit)
       onEdit(newValue);
   };
-
-  const removeAllNoNumericValues = (newValue: string) => {
-    let fixedValue = newValue.replace(/[,]/g, '.');
-
-    if (fixedValue.length <= 2)
-      fixedValue = fixedValue.replace(/[^\d.]/g, '');
-
-    if (!isNaN(Number(fixedValue)))
-      return fixedValue;
-    else
-      return newValue;
-  }
 
   return (
     <Container>
       <DescriptionContainer>
         <Description>{description}</Description>
       </DescriptionContainer>
-      <StyledInput
-        type="text"
-        placeholder="Brak"
-        onChange={handleChange}
-        value={value}
-      />
+      <StyledSelect value={value} onChange={handleChange}>
+        {values.map((data) =>
+          <option key={data.key} value={data.key}>{data.value}</option>
+        )}
+      </StyledSelect>
     </Container>
   )
 };
 
-export default Textbox;
+export default Combobox;

@@ -1,6 +1,7 @@
 import { FieldAction } from "../actions/fieldActions"
 
 export type Field = {
+  name: string;
   alphabeticalId: string,
   recordNumber: string,
   areaInHectares: number,
@@ -18,8 +19,12 @@ const initalState: FieldsState = {
   fields: []
 }
 
-export const FieldsReducer = (state: FieldsState = initalState, action: FieldAction): FieldsState => {
+export const fieldsReducer = (state: FieldsState = initalState, action: FieldAction): FieldsState => {
   switch (action.type) {
+    case "SET_FIELDS": {
+      return action.payload.state;
+    }
+
     case "CREATE_FIELD": {
       return {
         ...state,
@@ -31,6 +36,7 @@ export const FieldsReducer = (state: FieldsState = initalState, action: FieldAct
             recordNumber: "",
             areaInHectares: 0,
             realizedPackageOrVariant: "",
+            name: ""
           }
         ],
         lastId: state.lastId + 1

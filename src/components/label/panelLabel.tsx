@@ -1,10 +1,12 @@
-import styled from "styled-components"
+import styled from '@emotion/styled'
 import React from 'react'
 import Panel from "../panel/panel";
 import { ThemeProps } from "../../layout/theme";
 
 type Props = {
-  largeFont?:boolean
+  largeFont?:boolean,
+  margin?:boolean,
+  small?:boolean
 }
 
 type LabelProps = ThemeProps & Props;
@@ -13,8 +15,9 @@ const Label = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
-  width: 280px;
+  width: ${(props:Props) => props.small ? "182px" : "280px"};
   height: 40px;
   margin: 0px;
   padding: 0px; 
@@ -22,10 +25,10 @@ const Label = styled.p`
   font-size: ${(props: LabelProps) => props.largeFont ?  props.theme.font.extra_large : props.theme.font.medium};
 `;
 
-const PanelLabel: React.FC<Props> = ({ children, largeFont}) => {
+const PanelLabel: React.FC<Props> = ({ children, largeFont, margin, small}) => {
   return (
-    <Panel width="280px" height="40px">
-      <Label largeFont={largeFont}>{children}</Label>
+    <Panel width={small ? "182px" : "280px"} height="40px" marginLeft={margin ? true : false}>
+      <Label small={small} largeFont={largeFont}>{children}</Label>
     </Panel>
   )
 }

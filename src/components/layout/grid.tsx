@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from '@emotion/styled'
 
 type Props = {
   "column-size": string;
@@ -9,12 +9,9 @@ type Props = {
 
 const Grid = styled.div`
   display: grid;
-  width: ${(props: Props) => props.width ? props.width : "100%"};
-  height: ${(props: Props) => props.height ? props.height : "100%"};
+  width: ${(props: Props) => props.width ? props.width : "calc(100vw - 220px)"};
+  height: ${(props: Props) => props.height ? props.height : "calc(100vh - 200px)"};
   
-  justify-content: center;
-  align-content: center;
-
   grid-template-columns: ${(props: Props) => "repeat(auto-fill, " + props["column-size"] + ")"};
   grid-template-rows: ${(props: Props) => "repeat(auto-fill, " + props["row-size"] + ")"};
 `;

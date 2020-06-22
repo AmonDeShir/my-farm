@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from '@emotion/styled'
 import React from "react";
-import { ThemeProps } from "../../layout/theme";
 import plus from "../../assets/plus.svg";
 import selectedPlus from "../../assets/plus-blue.svg";
+import { ThemeProps } from '../../layout/theme';
 
 type ChildrenProps = ThemeProps & {
   small?:boolean;

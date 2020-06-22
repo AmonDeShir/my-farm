@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { ThemeProps } from '../../layout/theme';
 import Logo from "./Logo";
 import Topic from "./Topic";
@@ -21,8 +21,8 @@ const Navigation = () => (
     <Topic title="DANE">
       <Link to="/">Gospodarstwo</Link>
       <Link to="/fields">Pola</Link>
-      <Link to="/">Pastwiska</Link>
-      <Link to="/">Uprawy</Link>
+      <Link to="/pastures">Pastwiska</Link>
+      <Link to="/crops">Uprawy</Link>
       <Link to="/">Zwierzęta</Link>
       <Link to="/">Auto Uzupełnianie</Link>
     </Topic>
@@ -30,7 +30,7 @@ const Navigation = () => (
     <Topic title="OPERACJE AGROTECHNICZNE">
       <Link to="/">Pola</Link>
       <Link to="/">Uprawy</Link>
-      <Link to="/">Wszystkie</Link>
+      <Link to="/agrotechnicalOperations">Wszystkie</Link>
     </Topic>
 
     <Topic title="SKRÓTY">

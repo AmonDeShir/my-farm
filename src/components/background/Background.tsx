@@ -1,7 +1,5 @@
-import styled from "styled-components";
-
+import styled from "../../layout/theme";
 import dots from "../../assets/dots.svg";
-import { ThemeProps } from "../../layout/theme";
 
 const Background = styled.div`
   width: 100%;
@@ -9,7 +7,7 @@ const Background = styled.div`
   min-height: 100vh;
 
   background-image: url(${dots});
-  background-color: ${(props: ThemeProps) => props.theme.colors.main_background};
+  background-color: ${(props) => props.theme.colors.main_background};
 `;
 
 export default Background;
