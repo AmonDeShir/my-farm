@@ -1,11 +1,11 @@
 {
-  "name": "create-electron-ts-react",
+  "name": "my-farm",
   "productName": "electron-ts-react",
-  "version": "3.1.5",
-  "description": "Electron Typescript React Boilerplate / Starter",
+  "version": "0.5.0",
+  "description": "eu farm stuff generator",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saostad/Electron-React-Typescript.git"
+    "url": "https://github.com/AmonDeShir/my-farm"
   },
   "bin": "./lib/setup.js",
   "main": ".webpack/main",
@@ -26,11 +26,13 @@
     "starter",
     "boilerplate"
   ],
-  "author": "Saeid Ostad",
+  "author": "Amon De Shir",
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "executableName": "my-farm"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -46,10 +48,6 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
           "config": {}
         }
       ],
@@ -104,6 +102,7 @@
     "@electron-forge/maker-deb": "^6.0.0-beta.51",
     "@electron-forge/maker-rpm": "^6.0.0-beta.51",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
+    "@electron-forge/maker-wix": "^6.0.0-beta.51",
     "@electron-forge/maker-zip": "^6.0.0-beta.51",
     "@electron-forge/plugin-webpack": "^6.0.0-beta.51",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
