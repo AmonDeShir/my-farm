@@ -24,13 +24,12 @@ export const LoadReduxStore = () => {
   const dispatch = useDispatch();
 
   const loadData = () => {
-    load("agrotechnicalOperation_json",setAgrotechnicalOperation);
-    load("crops_json",setCrops);
-    load("farm_json",setFarm);
-    load("fields_json",setFields);
-    load("pastures_json",setPastures);
-    load("storage_json",setStorageRecords);
-
+    load("agrotechnicalOperation_json", setAgrotechnicalOperation);
+    load("crops_json", setCrops);
+    load("farm_json", setFarm);
+    load("fields_json", setFields);
+    load("pastures_json", setPastures);
+    load("storage_json", setStorageRecords);
 
     window.onbeforeunload = () => SaveReduxStore();
   };

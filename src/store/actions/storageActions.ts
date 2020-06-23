@@ -2,7 +2,9 @@ import { AgrotechnicalOperation, AgrotechnicalOperationState } from "../reducers
 import { StorageState, StorageRecord } from "../reducers/storageReducer";
 
 type CreateStorageRecord = {
-  type: "CREATE_STORAGE_RECORD", payload: {}
+  type: "CREATE_STORAGE_RECORD", payload: {
+    product: string
+  }
 };
 
 type EditStorageRecord = {
@@ -31,9 +33,11 @@ export type StorageAction = CreateStorageRecord
   | setStorageRecordss;
 
 
-export const createStorageRecord = (): StorageAction => ({
+export const createStorageRecord = (product: string): StorageAction => ({
   type: "CREATE_STORAGE_RECORD",
-  payload: {}
+  payload: {
+    product: product
+  }
 });
 
 export const editStorageRecord = (id: number, data: Partial<StorageRecord>): StorageAction => ({

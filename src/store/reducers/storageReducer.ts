@@ -7,6 +7,7 @@ export type StorageRecord = {
   type: string,
   amount: number,
   description: string,
+  product: string
 }
 
 export type StorageState = {
@@ -35,7 +36,8 @@ export const storageReducer = (state: StorageState = initalState, action: Storag
             date: "",
             type: "Przychud",
             amount: 0,
-            description: ""
+            description: "",
+            product: action.payload.product
           }
         ],
         lastId: state.lastId + 1

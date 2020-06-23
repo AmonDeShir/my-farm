@@ -51,14 +51,11 @@ const Navigation = () => (
 
 
     <Topic title="MAGAZYN">
-      <Link to="/">Stan</Link>
+      <Link to="/storage">Magazyn</Link>
     </Topic>
 
     <Topic title="EXCEL">
-      <Link to="/">Kartoteki <br/> magazynowe</Link>
-      <Link to="/">Rejestr <br/> działalności <br/> rolniczej</Link>
-      <Link to="/">Generuj <br/> wszystko</Link>
-
+      <Link to="/">Excel</Link>
     </Topic>
 
 

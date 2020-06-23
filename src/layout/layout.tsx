@@ -29,7 +29,7 @@ const GlobalStyle = {
 
 const Container = styled.div`
   height: 100%;
-  width: calc(100% - 180px - 15px);
+  width: 100%;
   padding-left: calc(180px + 15px);
   padding-top: 15px;
 `;
