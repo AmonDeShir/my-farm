@@ -1,8 +1,8 @@
 {
   "name": "my-farm",
   "productName": "electron-ts-react",
-  "version": "0.5.0",
-  "description": "eu farm stuff generator",
+  "version": "0.5.1",
+  "description": "europe union farm stuff generator",
   "repository": {
     "type": "git",
     "url": "https://github.com/AmonDeShir/my-farm"
@@ -37,7 +37,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electron-ts-react"
+            "name": "my-farm"
           }
         },
         {
@@ -49,6 +49,13 @@
         {
           "name": "@electron-forge/maker-deb",
           "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-wix",
+          "config": {
+            "language": 1033,
+            "manufacturer": "Amon De Shir"
+          }
         }
       ],
       "plugins": [
@@ -87,6 +94,7 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "unzipper": "^0.10.11",
+    "update-electron-app": "^1.5.0",
     "url-loader": "^4.1.0"
   },
   "devDependencies": {

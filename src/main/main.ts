@@ -1,6 +1,8 @@
 import { app, BrowserWindow, Session } from "electron";
 import path from "path";
 
+require('update-electron-app')()
+
 declare global {
   const MAIN_WINDOW_WEBPACK_ENTRY: string;
 }

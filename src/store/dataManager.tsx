@@ -7,20 +7,29 @@ import { setFarm } from "./actions/farmActions";
 import { setFields } from "./actions/fieldActions";
 import { setPastures } from "./actions/pastureActions";
 import { store } from "./store";
+import { setStorageRecords } from "./actions/storageActions";
 
 export const electronStore = new Store();
+
+export const SaveReduxStore = () => {
+  electronStore.set("agrotechnicalOperation_json", JSON.stringify(store.getState().agrotechnicalOperation));
+  electronStore.set("crops_json", JSON.stringify(store.getState().crops));
+  electronStore.set("farm_json", JSON.stringify(store.getState().farm));
+  electronStore.set("fields_json", JSON.stringify(store.getState().fields));
+  electronStore.set("pastures_json", JSON.stringify(store.getState().pastures));
+  electronStore.set("storage_json", JSON.stringify(store.getState().storage));
+}
 
 export const LoadReduxStore = () => {
   const dispatch = useDispatch();
 
   const loadData = () => {
-    console.log("start laoding!");
-
-    load("agrotechnicalOperation_json",setAgrotechnicalOperation);
-    load("crops_json",setCrops);
-    load("farm_json",setFarm);
-    load("fields_json",setFields);
-    load("pastures_json",setPastures);
+    load("agrotechnicalOperation_json", setAgrotechnicalOperation);
+    load("crops_json", setCrops);
+    load("farm_json", setFarm);
+    load("fields_json", setFields);
+    load("pastures_json", setPastures);
+    load("storage_json", setStorageRecords);
 
     window.onbeforeunload = () => SaveReduxStore();
   };
@@ -58,12 +67,4 @@ export const LoadReduxStore = () => {
       {loadData()}
     </>
   )
-}
-
-export const SaveReduxStore = () => {
-  electronStore.set("agrotechnicalOperation_json", JSON.stringify(store.getState().agrotechnicalOperation));
-  electronStore.set("crops_json", JSON.stringify(store.getState().crops));
-  electronStore.set("farm_json", JSON.stringify(store.getState().farm));
-  electronStore.set("fields_json", JSON.stringify(store.getState().fields));
-  electronStore.set("pastures_json", JSON.stringify(store.getState().pastures));
 }

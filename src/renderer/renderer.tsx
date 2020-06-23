@@ -10,6 +10,7 @@ import Pasture from "../containers/pasture";
 import Crop from "../containers/crop";
 import AgrotechnicalOperations from "../containers/agrotechnicalOperations";
 import { LoadReduxStore } from "../store/dataManager";
+import Storage from "../containers/storage";
 
 ReactDOM.render(
   <Layout>
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="/pastures" render={() => <Pasture/>} />
       <Route path="/crops" render={() => <Crop/>} />
       <Route path="/agrotechnicalOperations" render={() => <AgrotechnicalOperations/>} />
+      <Route path="/storage" render={() => <Storage/>} />
     </Provider>
   </Layout>,
   document.getElementById("app")

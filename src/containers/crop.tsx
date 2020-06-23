@@ -6,8 +6,6 @@ import Center from "../components/layout/center";
 import { RootState } from '../store/store';
 import PanelLabel from '../components/label/panelLabel';
 import Grid from '../components/layout/grid';
-import PastureViewer from '../components/viewer/pastureViewer';
-import { PasturesState } from '../store/reducers/pastureReducer';
 import { CropState } from '../store/reducers/cropReducer';
 import { removeCrop, createCrop, editCrop } from '../store/actions/cropActions';
 import CropViewer from '../components/viewer/cropViewer';
