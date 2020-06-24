@@ -11,6 +11,7 @@ import Crop from "../containers/crop";
 import AgrotechnicalOperations from "../containers/agrotechnicalOperations";
 import { LoadReduxStore } from "../store/dataManager";
 import Storage from "../containers/storage";
+import Excel from "../containers/excel";
 
 ReactDOM.render(
   <Layout>
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="/crops" render={() => <Crop/>} />
       <Route path="/agrotechnicalOperations" render={() => <AgrotechnicalOperations/>} />
       <Route path="/storage" render={() => <Storage/>} />
+      <Route path="/excel" render={() => <Excel/>} />
     </Provider>
   </Layout>,
   document.getElementById("app")
