@@ -33,9 +33,7 @@ const Crop = () => {
   }
 
   const onNameChanged = (id: number, value: string) => {
-    console.log("1", value)
     dispatch(editCrop(id, { name: value }));
-    console.log("2", crops[id].name);
   }
 
   const onPlantVariantChanged = (id: number, value: string) => {
@@ -48,7 +46,6 @@ const Crop = () => {
 
   const onFieldChanged = (id: number, value?: number) => {
     dispatch(editCrop(id, { field: value }));
-    console.log("5", value)
   }
 
   return (

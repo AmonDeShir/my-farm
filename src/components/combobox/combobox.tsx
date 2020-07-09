@@ -54,8 +54,6 @@ const Combobox: React.FC<Props> = ({defaultValue, description, values, onEdit })
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = Number(event.target.value);
-    console.log("-1", newValue, event.target.value)
-
 
     setValue(newValue);
 

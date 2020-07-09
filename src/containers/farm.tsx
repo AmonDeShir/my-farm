@@ -40,12 +40,10 @@ const Farm = () => {
   }
 
   const onEditDistrictNumber = (value: string) => {
-    console.log(value, "distric number")
     dispatch(editDistrictNumber(value));
   }
 
   const onEditPlEkoNumber = (value: string) => {
-    console.log(value, "pleko")
     dispatch(editPlEkoNumber(value));
   }
 

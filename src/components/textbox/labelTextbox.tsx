@@ -43,7 +43,6 @@ const LabelTextbox:React.FC<Props> = (props) => {
   const [value, setValue] = useState(() => (props.value ? props.value : ""));
   
   const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-    console.log("done -1")
     setValue(event.target.value);
 
     if(props.onChange){

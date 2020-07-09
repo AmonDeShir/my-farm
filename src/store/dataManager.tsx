@@ -35,16 +35,12 @@ export const LoadReduxStore = () => {
   };
 
   const load = (name: string, action: any) => {
-    console.log("loading", name);
     const data = getFile(name);
     loadToStore(action, data);
   }
 
   const getFile = (name: string) => {
     const file = electronStore.get(name, undefined);
-
-    console.log("loading", name, "result:", file);
-
 
     if (file !== undefined)
       return JSON.parse(file);
@@ -53,9 +49,6 @@ export const LoadReduxStore = () => {
   }
 
   const loadToStore = (action: any, data: any) => {
-    console.log("json", "result:", data);
-
-
     if (data === undefined)
       return;
     else

@@ -51,8 +51,6 @@ const CropViewer: React.FC<Props> = (props) => {
   };
 
   const onFieldChanged = (value: number) => {
-    console.log("1", value)
-
 
     if (value === -1)
       props.onFieldChanged(id, undefined);

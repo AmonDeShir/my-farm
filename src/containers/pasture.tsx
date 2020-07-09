@@ -20,7 +20,6 @@ const Pasture = () => {
 
   const onCreate = () => {
     dispatch(createPasture());
-    console.log(pastures);
   }
 
   const onAlphabeticalIdChanged = (id: number, value: string) => {

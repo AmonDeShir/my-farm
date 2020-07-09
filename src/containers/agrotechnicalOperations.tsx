@@ -6,12 +6,10 @@ import Center from "../components/layout/center";
 import { RootState } from '../store/store';
 import PanelLabel from '../components/label/panelLabel';
 import { CropState } from '../store/reducers/cropReducer';
-import { removeCrop, createCrop, editCrop } from '../store/actions/cropActions';
 import { FieldsState } from '../store/reducers/fieldReducer';
-import Column from '../components/layout/column';
 import { AgrotechnicalOperationState, agrotechnicalOperationReducer } from '../store/reducers/agrotechnicalOperationsReducer';
 import AgrotechnicalOperationViewer from "../components/viewer/AgrotechnicalOperationViewer";
-import { createAgrotechnicalOperation, editAgrotechnicalOperation } from '../store/actions/agrotechnicalOperationsActions';
+import { createAgrotechnicalOperation, editAgrotechnicalOperation, removeAgrotechnicalOperation } from '../store/actions/agrotechnicalOperationsActions';
 import Grid from '../components/layout/grid';
 
 const AgrotechnicalOperations = () => {
@@ -21,7 +19,7 @@ const AgrotechnicalOperations = () => {
   const operations = useSelector<RootState, AgrotechnicalOperationState["operations"]>((state) => state.agrotechnicalOperation.operations);
 
   const onRemoveClick = (id: number) => {
-    dispatch(removeCrop(id));
+    dispatch(removeAgrotechnicalOperation(id));
   }
 
   const onCreate = () => {
