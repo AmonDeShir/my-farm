@@ -1,11 +1,10 @@
 import React from "react";
 import CentredPanelWithDeleteBtn from "../panel/centredPanelWithDeleteBtn";
-import LabelTextbox from "../textbox/labelTextbox";
 import Textbox from "../textbox/textbox";
-import { Field } from "../../store/reducers/fieldReducer";
 import Combobox from "../combobox/combobox";
 import { StorageRecord } from "../../store/reducers/storageReducer";
 import ValueLabel from "../label/valueLabel";
+import DataTextbox from "../textbox/dataTextbox";
 
 type Props = {
   id: number;
@@ -44,7 +43,7 @@ const StorageRecordViewer: React.FC<Props> = (props) => {
       flex-column
       onDeleteBtnClicked={() => props.onDeleteBtnClick(id)}
     >
-      <Textbox
+      <DataTextbox
         description="Data"
         defaultValue={data.date}
         onEdit={onDateChanged}

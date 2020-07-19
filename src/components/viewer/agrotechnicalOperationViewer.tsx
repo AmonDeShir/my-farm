@@ -59,7 +59,6 @@ const AgrotechnicalOperationViewer: React.FC<Props> = (props) => {
       flex-column
       onDeleteBtnClicked={() => props.onDeleteBtnClick(id)}
     >
-      {console.log("AgrotechnicalOperationViewers rerender!")}
       <DataTextbox
         description="Data wykonania
         czyności"
@@ -86,8 +85,6 @@ const AgrotechnicalOperationViewer: React.FC<Props> = (props) => {
         defaultValue={data.activity}
         onEdit={onActivityChanged}
       />
-
-      {console.log(data.workingAreaInHectare.toString())}
 
       <Textbox
         description="Powieszchnia wykonywanej czyności"
