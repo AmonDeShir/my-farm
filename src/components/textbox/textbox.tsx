@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProps } from "../../layout/theme";
 
 type Props = {
@@ -64,6 +64,7 @@ const Textbox: React.FC<Props> = ({ onlyNumbers, description, onEdit, defaultVal
       onEdit(newValue);
   };
 
+
   const removeAllNoNumericValues = (newValue: string) => {
     let fixedValue = newValue.replace(/[,]/g, '.');
 
@@ -75,6 +76,13 @@ const Textbox: React.FC<Props> = ({ onlyNumbers, description, onEdit, defaultVal
     else
       return newValue;
   }
+
+
+  useEffect(() => {   
+    if(value !== defaultValue){
+      setValue(defaultValue);
+    }
+  });
 
   return (
     <Container>

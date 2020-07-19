@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProps } from "../../layout/theme";
 
 type Props = {
@@ -60,6 +60,12 @@ const Combobox: React.FC<Props> = ({defaultValue, description, values, onEdit })
     if (onEdit)
       onEdit(newValue);
   };
+
+  useEffect(() => {   
+    if(value !== defaultValue){
+      setValue(defaultValue);
+    }
+  });
 
   return (
     <Container>
