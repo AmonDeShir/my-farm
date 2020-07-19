@@ -9,7 +9,7 @@ const home = os.homedir();
 export function openSaveFileDialog(title: string, buttonLabel: string, defaulFileName: string, defaulFolder?: string) {
   const defaultPath = path.resolve(defaulFolder !== undefined ? defaulFolder : home, defaulFileName)
 
-  const config = {
+  const config : Electron.SaveDialogSyncOptions  = {
     title: title,
     defaultPath: defaultPath,
     buttonLabel: buttonLabel, filters: [{ name: 'Wszystkie pliki', extensions: ['*'] }]
@@ -19,7 +19,7 @@ export function openSaveFileDialog(title: string, buttonLabel: string, defaulFil
 }
 
 export function openErrorDialog(title: string, message: string) {
-  const config = {
+  const config : Electron.MessageBoxOptions  = {
     type: "error",
     buttons: ['Ok'],
     title: title,
@@ -30,7 +30,7 @@ export function openErrorDialog(title: string, message: string) {
 }
 
 export function openWarringDialog(title: string, message: string) {
-  const config = {
+  const config : Electron.MessageBoxOptions  = {
     type: "warning",
     buttons: ['Ok'],
     title: title,
@@ -40,7 +40,7 @@ export function openWarringDialog(title: string, message: string) {
   dialog.showMessageBoxSync(win, config);
 }
 export function openOkMessageDialog(title: string, message: string) {
-  const config = {
+  const config : Electron.MessageBoxOptions  = {
     type: "info",
     buttons: ['Ok'],
     title: title,
@@ -51,7 +51,7 @@ export function openOkMessageDialog(title: string, message: string) {
 }
 
 export function openYesNoDialog(title: string, message: string) {
-  const config = {
+  const config : Electron.MessageBoxOptions = {
     type: "question",
     buttons: ['Tak', 'Nie'],
     title: title,
@@ -59,4 +59,17 @@ export function openYesNoDialog(title: string, message: string) {
   };
 
   return dialog.showMessageBoxSync(win, config) === 0
+}
+
+export function openSelectFolderDialog(title: string, buttonLabel: string, defaulFolder?: string) {
+  const defaultPath = defaulFolder !== undefined ? defaulFolder : home;
+
+  const config : Electron.OpenDialogSyncOptions = {
+    title: title,
+    defaultPath: defaultPath,
+    buttonLabel: buttonLabel, filters: [{ name: 'Wszystkie pliki', extensions: ['*'] }],
+    properties: ['openDirectory']
+  }
+
+  return dialog.showOpenDialogSync(win, config);
 }

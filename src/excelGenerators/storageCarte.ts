@@ -41,29 +41,30 @@ class StorageCarte extends ExcelGenerator {
 
   private addOperations(page: Page) {
     const firstTableLine = 7;
-    const lastTableLine = firstTableLine + this.storageRecords.length;
-
+    const lastTableLine = firstTableLine + this.storageRecords.length -1;
+    
     page.editByLine(firstTableLine, lastTableLine, (line) => {
       const record = this.storageRecords[line.number - firstTableLine];
       const actualState = this.calcActualState(record);
 
       line.setDefaultOperationRange("A", "I");
       line.setBorder("medium", "medium", "medium", "medium");
-      line.setFont("Arial", 16);
+      line.setFont("Arial", 11);
       line.setFontAlignment("center", "middle", true);
       line.setBold(false);
       line.setItalic(false);
       line.mergeFromTo("E", "I");
 
       line.editCell("A", record.date);
-      line.editCell("B", record.type === "Rozchód" ? 0 : record.amount);
-      line.editCell("C", record.type !== "Rozchód" ? record.amount : 0);
+      line.editCell("B", record.type === "Przychud" ? record.amount : 0);
+      line.editCell("C", record.type !== "Przychud" ? record.amount : 0);
       line.editCell("D", actualState);
+      line.editCell("E", record.description);
     });
   }
 
   private calcActualState(record: StorageRecord) {
-    let records = this.removeRecordAfter(this.storageRecords, record);
+    let records = this.removeRecordAfter(this.storageRecords.filter(()=>true), record);
 
     return this.totalRecordsUp(records);
   }
