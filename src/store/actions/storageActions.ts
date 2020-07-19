@@ -20,7 +20,14 @@ type RemoveStorageRecord = {
   }
 };
 
-type setStorageRecordss = {
+type RemoveStorageRecordsByProduct = {
+  type: "REMOVE_STORAGE_RECORDS_BY_PRODUCT", payload: {
+    product: string;
+  }
+};
+
+
+type SetStorageRecords = {
   type: "SET_STORAGE_RECORDS", payload: {
     state: StorageState
   }
@@ -30,7 +37,8 @@ type setStorageRecordss = {
 export type StorageAction = CreateStorageRecord
   | EditStorageRecord
   | RemoveStorageRecord
-  | setStorageRecordss;
+  | RemoveStorageRecordsByProduct
+  | SetStorageRecords
 
 
 export const createStorageRecord = (product: string): StorageAction => ({
@@ -45,6 +53,13 @@ export const editStorageRecord = (id: number, data: Partial<StorageRecord>): Sto
   payload: {
     id: id,
     data: data
+  }
+});
+
+export const removeStorageRecordsByProduct = (product: string): StorageAction => ({
+  type: "REMOVE_STORAGE_RECORDS_BY_PRODUCT",
+  payload: {
+    product: product,
   }
 });
 

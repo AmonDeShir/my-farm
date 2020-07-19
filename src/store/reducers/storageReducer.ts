@@ -66,6 +66,13 @@ export const storageReducer = (state: StorageState = initalState, action: Storag
       }
     }
 
+    case "REMOVE_STORAGE_RECORDS_BY_PRODUCT": {
+      return {
+        ...state,
+        records: state.records.filter(({product}) => product !== action.payload.product)
+      }
+    }
+
     default: return state;
   }
 }

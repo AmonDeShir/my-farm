@@ -19,10 +19,28 @@ const Crop = () => {
 
   const onRemoveClick = (id: number) => {    
     const crop = crops.filter(crop => crop.id === id)[0];
-    const product = crop.plant + " " + crop.plantVariant;
+    const product = getProduct(crop);
 
-    dispatch(removeStorageRecordsByProduct(product))
+    if(isLastCropWithThisPlant(crop))
+      dispatch(removeStorageRecordsByProduct(product));
+
     dispatch(removeCrop(id));
+  }
+
+  const isLastCropWithThisPlant = (crop: CropModel)  => {
+    const plant = getProduct(crop);
+    let counter = 0;
+
+    for(const crop of crops) {
+      if(getProduct(crop) === plant)
+        counter++;
+    } 
+
+    return counter === 1;
+  }
+
+  const getProduct = (crop: CropModel) => {
+    return crop.plant + " " + crop.plantVariant;
   }
 
   const onCreate = () => {
