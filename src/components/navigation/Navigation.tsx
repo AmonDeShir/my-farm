@@ -55,7 +55,7 @@ const Navigation = () => (
     </Topic>
 
     <Topic title="EXCEL">
-      <Link to="/">Excel</Link>
+      <Link to="/excel">Excel</Link>
     </Topic>
 
 

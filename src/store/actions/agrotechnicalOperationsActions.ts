@@ -76,7 +76,7 @@ export const editAgrotechnicalOperation = (id: number, data: Partial<Agrotechnic
 export const removeAgrotechnicalOperation = (id: number): AgrotechnicalOperationAction => ({
   type: "REMOVE_AGROTECHNICAL_OPERATION",
   payload: {
-    id: id,
+    id: id
   }
 });
 

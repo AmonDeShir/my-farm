@@ -31,7 +31,6 @@ const Fields = () => {
   }
 
   const onNameChanged = (id: number, value: string) => {
-    console.log("1", value);
     dispatch(editField(id, { name: value }));
   }
 

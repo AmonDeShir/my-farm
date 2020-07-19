@@ -1,10 +1,12 @@
-import { createStore, combineReducers } from "redux";
 import { farmReducer } from "./reducers/farmReducer";
 import { fieldsReducer } from "./reducers/fieldReducer";
 import { pasturesReducer } from "./reducers/pastureReducer";
 import { cropsReducer } from "./reducers/cropReducer";
 import { agrotechnicalOperationReducer } from "./reducers/agrotechnicalOperationsReducer";
 import { storageReducer } from "./reducers/storageReducer";
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import logger from 'redux-logger';
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   farm: farmReducer,
@@ -17,4 +19,4 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, applyMiddleware(thunk, logger));

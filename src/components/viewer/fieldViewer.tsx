@@ -35,7 +35,6 @@ const FieldViewer: React.FC<Props> = (props) => {
   };
 
   const onNameChanged = (value: string) => {
-    console.log(value);
     props.onNameChanged(id, value);
   }
 

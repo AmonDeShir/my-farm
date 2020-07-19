@@ -3,12 +3,13 @@ import CentredPanelWithDeleteBtn from "../panel/centredPanelWithDeleteBtn";
 import Textbox from "../textbox/textbox";
 import Combobox from "../combobox/combobox";;
 import { AgrotechnicalOperation } from "../../store/reducers/agrotechnicalOperationsReducer";
+import DataTextbox from "../textbox/dataTextbox";
 
 type Props = {
   id: number;
   data: AgrotechnicalOperation;
-  crops: {key:number, value:string}[];
-  fields: {key:number, value:string}[];
+  crops: { key: number, value: string }[];
+  fields: { key: number, value: string }[];
   onDeleteBtnClick: (id: number) => void;
   onDateChanged: (id: number, value: string) => void;
   onCropChanged: (id: number, value: number | undefined) => void;
@@ -58,7 +59,7 @@ const AgrotechnicalOperationViewer: React.FC<Props> = (props) => {
       flex-column
       onDeleteBtnClicked={() => props.onDeleteBtnClick(id)}
     >
-      <Textbox
+      <DataTextbox
         description="Data wykonania
         czyności"
         defaultValue={data.date}
@@ -91,7 +92,6 @@ const AgrotechnicalOperationViewer: React.FC<Props> = (props) => {
         defaultValue={data.workingAreaInHectare.toString()}
         onEdit={onWorkingAreaInHectaresChanged}
       />
-
 
       <Textbox
         description="Uwagi"

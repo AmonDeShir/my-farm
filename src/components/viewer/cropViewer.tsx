@@ -51,8 +51,6 @@ const CropViewer: React.FC<Props> = (props) => {
   };
 
   const onFieldChanged = (value: number) => {
-    console.log("1", value)
-
 
     if (value === -1)
       props.onFieldChanged(id, undefined);
@@ -91,7 +89,7 @@ const CropViewer: React.FC<Props> = (props) => {
 
       <Combobox
         description="Typ"
-        values={[{ key: 0, value: "Plon Główn" }, { key: 1, value: "Poplon" }]}
+        values={[{ key: 0, value: "Plon Główny" }, { key: 1, value: "Poplon" }]}
         defaultValue={data.cropType === "Poplon" ? 1 : 0}
         onEdit={onCropTypeChanged}
       />

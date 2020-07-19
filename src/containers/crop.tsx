@@ -6,18 +6,41 @@ import Center from "../components/layout/center";
 import { RootState } from '../store/store';
 import PanelLabel from '../components/label/panelLabel';
 import Grid from '../components/layout/grid';
-import { CropState } from '../store/reducers/cropReducer';
+import { CropState, Crop as CropModel } from '../store/reducers/cropReducer';
 import { removeCrop, createCrop, editCrop } from '../store/actions/cropActions';
 import CropViewer from '../components/viewer/cropViewer';
 import { FieldsState } from '../store/reducers/fieldReducer';
+import { removeStorageRecordsByProduct } from '../store/actions/storageActions';
 
 const Crop = () => {
   const dispatch = useDispatch();
   const crops = useSelector<RootState, CropState["crops"]>((state) => state.crops.crops);
   const fields = useSelector<RootState, FieldsState["fields"]>((state) => state.fields.fields);
 
-  const onRemoveClick = (id: number) => {
+  const onRemoveClick = (id: number) => {    
+    const crop = crops.filter(crop => crop.id === id)[0];
+    const product = getProduct(crop);
+
+    if(isLastCropWithThisPlant(crop))
+      dispatch(removeStorageRecordsByProduct(product));
+
     dispatch(removeCrop(id));
+  }
+
+  const isLastCropWithThisPlant = (crop: CropModel)  => {
+    const plant = getProduct(crop);
+    let counter = 0;
+
+    for(const crop of crops) {
+      if(getProduct(crop) === plant)
+        counter++;
+    } 
+
+    return counter === 1;
+  }
+
+  const getProduct = (crop: CropModel) => {
+    return crop.plant + " " + crop.plantVariant;
   }
 
   const onCreate = () => {
@@ -33,9 +56,7 @@ const Crop = () => {
   }
 
   const onNameChanged = (id: number, value: string) => {
-    console.log("1", value)
     dispatch(editCrop(id, { name: value }));
-    console.log("2", crops[id].name);
   }
 
   const onPlantVariantChanged = (id: number, value: string) => {
@@ -47,9 +68,22 @@ const Crop = () => {
   }
 
   const onFieldChanged = (id: number, value?: number) => {
-    dispatch(editCrop(id, { field: value }));
-    console.log("5", value)
+    let autocomplete = areaSizeAutoCompleteBasedOnField(value);
+    autocomplete.field = value;
+
+    dispatch(editCrop(id, autocomplete));
   }
+
+  const areaSizeAutoCompleteBasedOnField = ( fieldNumber?: number) => {
+    const field = fieldNumber === undefined ? undefined : fields.filter(({id}) => id === fieldNumber)[0];
+    let autocomplete: Partial<CropModel> = {};
+
+    if (field)
+     autocomplete.areaInHectares = field.areaInHectares;
+
+    return autocomplete;
+  }
+
 
   return (
     <>
