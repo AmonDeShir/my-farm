@@ -46,6 +46,7 @@ class StorageCarte extends ExcelGenerator {
     page.editByLine(firstTableLine, lastTableLine, (line) => {
       const record = this.storageRecords[line.number - firstTableLine];
       const actualState = this.calcActualState(record);
+      const recordAmount = isNaN(record.amount) ? 0 : record.amount;
 
       line.setDefaultOperationRange("A", "I");
       line.setBorder("medium", "medium", "medium", "medium");
@@ -56,8 +57,8 @@ class StorageCarte extends ExcelGenerator {
       line.mergeFromTo("E", "I");
 
       line.editCell("A", record.date);
-      line.editCell("B", record.type === "Przychud" ? record.amount : 0);
-      line.editCell("C", record.type !== "Przychud" ? record.amount : 0);
+      line.editCell("B", record.type === "Przychud" ? recordAmount : 0);
+      line.editCell("C", record.type !== "Przychud" ? recordAmount : 0);
       line.editCell("D", actualState);
       line.editCell("E", record.description);
     });

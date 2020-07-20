@@ -71,6 +71,7 @@ class RegisterOfAgriEnvironmentalActivities extends ExcelGenerator {
       const operation = this.agrotechnicalOperations[line.number - firstTableLine];
       const field = this.getField(operation);
       const crop = this.getCrop(operation);
+      const areaInHectares =  !field || (field && isNaN(field.areaInHectares)) ? "" : field.areaInHectares.toString();
 
       line.setDefaultOperationRange("A", "J");
       line.setBorder("thin", "thin", "thin", "thin");
@@ -82,7 +83,8 @@ class RegisterOfAgriEnvironmentalActivities extends ExcelGenerator {
       line.editCell("A", field ? field.alphabeticalId : "");
       line.editCell("B", field ? field.recordNumber : "");
       line.editCell("C", operation.date);
-      line.editCell("D", field ? `${field.areaInHectares} ha` : "");
+
+      line.editCell("D", areaInHectares ? `${areaInHectares} ha` : "");
       line.editCell("E", crop ? crop.cropType : "");
 
       line.editCell("F", operation.activity);

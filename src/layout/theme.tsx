@@ -6,7 +6,8 @@ export const theme =
     font: "white",
     main_background: "#0C111F",
     second_background: "#111A2E",
-    selection_color: "#4D8AF0"
+    selection_color: "#4D8AF0",
+    error: "#FF0000"
   },
 
   font:{
